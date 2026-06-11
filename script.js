@@ -117,5 +117,4 @@ Obrigado por ser exatamente quem você é.
 
 }
 
-document.getElementById("continuar").onclick=primeiraPergunta;
-};
+document.getElementById("continuar").onclick = primeiraPergunta;
