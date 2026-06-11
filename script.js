@@ -86,35 +86,27 @@ document.getElementById("sim").onclick=finalFeliz;
 
 }
 
-function finalFeliz(){
+function finalFeliz() {
 
-document.getElementById("musica").play();
+    const musica = document.getElementById("musica");
 
-confetti({
-particleCount:250,
-spread:180
-});
+    musica.currentTime = 0;
+    musica.play();
 
-document.body.innerHTML=`
+    confetti({
+        particleCount: 250,
+        spread: 180
+    });
 
-<div class="card">
+    card.innerHTML = `
+        <h1>❤️ ELA DISSE SIM ❤️</h1>
 
-<h1>❤️ ELA DISSE SIM ❤️</h1>
+        <img src="foto.jpg" style="width:250px;border-radius:20px;margin:20px;">
 
-<img src="foto.jpg" style="width:250px;border-radius:20px;margin:20px;">
-
-<p>
-
-Desde que você apareceu na minha vida, tudo ficou mais bonito.
-Obrigado por ser exatamente quem você é.
-❤️
-
-</p>
-
-</div>
-
-`;
-
+        <p>
+            Desde que você apareceu na minha vida, tudo ficou mais bonito.
+            Obrigado por ser exatamente quem você é. ❤️
+        </p>
+    `;
 }
-
 document.getElementById("continuar").onclick = primeiraPergunta;
