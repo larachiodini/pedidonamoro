@@ -1,42 +1,92 @@
-const continuar = document.getElementById("continuar");
-const pergunta = document.getElementById("pergunta");
-const titulo = document.getElementById("titulo");
-const texto = document.getElementById("texto");
+const card = document.querySelector(".card");
 
-continuar.onclick = () => {
+function primeiraPergunta(){
 
-titulo.innerHTML = "Última pergunta...";
-texto.style.display = "none";
-continuar.style.display = "none";
+card.innerHTML=`
 
-pergunta.classList.remove("escondido");
+<h1>Pergunta 1</h1>
 
-};
+<p style="font-size:25px;margin:30px 0;">
+Você tem aura? 
+</p>
 
-const nao = document.getElementById("nao");
+<div class="botoes">
 
-nao.style.left="58%";
-nao.style.top="57%";
+<button id="auraSim">SIM</button>
 
-function fugir(){
+<button id="auraNao">NÃO</button>
 
-const largura = window.innerWidth-nao.offsetWidth-20;
-const altura = window.innerHeight-nao.offsetHeight-20;
+</div>
 
-const x=Math.random()*largura;
-const y=Math.random()*altura;
+`;
 
-nao.style.left=x+"px";
-nao.style.top=y+"px";
+document.getElementById("auraSim").onclick=pedido;
+
+document.getElementById("auraNao").onclick=semAura;
 
 }
 
-nao.addEventListener("mouseenter", fugir);
-nao.addEventListener("touchstart", fugir);
+function semAura(){
 
-const sim=document.getElementById("sim");
+card.innerHTML=`
 
-sim.onclick=()=>{
+<h1>Infelizmente...</h1>
+
+<img src="semaura.jpg" style="width:300px;border-radius:20px;margin:25px 0;">
+
+<p>Quem não tem aura não pode continuar 😔</p>
+
+<button onclick="primeiraPergunta()">Tentar novamente</button>
+
+`;
+
+}
+
+function pedido(){
+
+card.innerHTML=`
+
+<h1>Agora a pergunta de verdade ❤️</h1>
+
+<p style="font-size:28px;margin:30px 0;">
+Você aceita namorar comigo?
+</p>
+
+<div class="botoes">
+
+<button id="sim">SIM ❤️</button>
+
+<button id="nao">NÃO</button>
+
+</div>
+
+`;
+
+const nao=document.getElementById("nao");
+
+nao.style.position="absolute";
+
+nao.style.left="58%";
+nao.style.top="55%";
+
+function fugir(){
+
+const largura=window.innerWidth-nao.offsetWidth-20;
+const altura=window.innerHeight-nao.offsetHeight-20;
+
+nao.style.left=Math.random()*largura+"px";
+nao.style.top=Math.random()*altura+"px";
+
+}
+
+nao.addEventListener("mouseenter",fugir);
+nao.addEventListener("touchstart",fugir);
+
+document.getElementById("sim").onclick=finalFeliz;
+
+}
+
+function finalFeliz(){
 
 document.getElementById("musica").play();
 
@@ -47,27 +97,25 @@ spread:180
 
 document.body.innerHTML=`
 
-<div class="card" id="final">
+<div class="card">
 
+<h1>❤️ ELA DISSE SIM ❤️</h1>
 
-<p style="font-size:22px">
+<img src="foto.jpg" style="width:250px;border-radius:20px;margin:20px;">
 
-Desde que você entrou na minha vida, tudo ficou mais leve.
-Seu sorriso é um dos meus lugares favoritos, e cada momento ao seu lado
-me faz ter ainda mais certeza de que quero viver muitos outros com você.
+<p>
 
+Desde que você apareceu na minha vida, tudo ficou mais bonito.
 Obrigado por ser exatamente quem você é.
-
 ❤️
 
 </p>
-
-<h2>
-Esse não é o pedido oficial ta kkkkkkkkkkkkk
-</h2>
 
 </div>
 
 `;
 
+}
+
+document.getElementById("continuar").onclick=primeiraPergunta;
 };
